@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://bitdm.github.io/2020/projects/p09/final/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>二手车交易价格预测-天池比赛</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="数据挖掘的相关材料">
+    <link rel="canonical" href="http://bitdm.github.io/2020/projects/p09/final/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./二手车交易价格预测-天池比赛_files/main.css">
+
+    <!-- Google fonts -->
+    <link href="./二手车交易价格预测-天池比赛_files/css" rel="stylesheet" type="text/css">
+
+    <!-- Google tracking -->
+    <script async="" src="./二手车交易价格预测-天池比赛_files/analytics.js"></script><script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-46895817-2', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+
+    <body data-new-gr-c-s-check-loaded="14.1040.0" data-gr-ext-installed=""><div id="MathJax_Message" style="display: none;"></div>
+
+    <header class="site-header">
+
+  <div class="wrap title-wrap">
+    <a class="site-title" href="https://bitdm.github.io/">数据挖掘@北京理工大学</a>
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <!--<header class="post-header">
+    <h1>二手车交易价格预测-天池比赛</h1>
+  </header>-->
+
+  <article class="post-content">
+  <h2 id="二手车交易价格预测-天池比赛">二手车交易价格预测-天池比赛</h2>
+
+<h3 id="1-问题背景与研究思路">1. 问题背景与研究思路</h3>
+
+<h4 id="11-问题背景">1.1 问题背景</h4>
+
+<p>选题来自天池比赛，通过挖掘二手车交易信息实现二手车的交易价格的预测。</p>
+
+<h4 id="12-研究思路">1.2 研究思路</h4>
+
+<p>二手车交易价格的预测问题可通过回归模型对数据进行拟合，从而建立二手车交易价格的预测模型。由于数据集中可能存在部分属性对于二手车交易价格影响较小，因此可选择关联度高的属性进行回归与预测，尽量减少模型的规模。为此，需对数据集进行预处理与可视化，以选取合适的属性。</p>
+
+<p>本报告内容安排如下：第2章介绍数据的获取与预处理过程，第3章分别对标称属性和数值属性的数据进行分析与可视化，第4章介绍回归模型的选取并展示价格的预测结果，最后介绍本项目的分工情况。</p>
+
+<h3 id="2-数据获取及预处理">2. 数据获取及预处理</h3>
+
+<h4 id="21-数据来源">2.1 数据来源</h4>
+
+<p>该项目为天池官方比赛，表格数据从天池比赛官方下载（https://tianchi.aliyun.com/competition/entrance/231784/information）。数据来自某交易平台的二手车交易记录，总数据量超过40w，包含31列变量信息，其中15列为匿名变量。由于部分属性涉及了部分商业信息，因此数据集对name、model、brand和regionCode等信息进行了脱敏。</p>
+
+<h4 id="22-数据说明">2.2 数据说明</h4>
+
+<p>下面为训练集数据信息。共有150000条数据，有31列变量信息。包括名称、品牌、公里数、价格等。v_0 ~v_14为匿名变量。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 150000 entries, 0 to 149999
+Data columns (total 32 columns):
+Unnamed: 0.1         150000 non-null int64
+SaleID               150000 non-null int64
+name                 150000 non-null int64
+regDate              150000 non-null int64
+model                149999 non-null float64
+brand                150000 non-null int64
+bodyType             145494 non-null float64
+fuelType             141320 non-null float64
+gearbox              144019 non-null float64
+power                150000 non-null int64
+kilometer            150000 non-null float64
+notRepairedDamage    125676 non-null float64
+regionCode           150000 non-null int64
+seller               150000 non-null int64
+offerType            150000 non-null int64
+creatDate            150000 non-null int64
+price                150000 non-null int64
+v_0                  150000 non-null float64
+v_1                  150000 non-null float64
+v_2                  150000 non-null float64
+v_3                  150000 non-null float64
+v_4                  150000 non-null float64
+v_5                  150000 non-null float64
+v_6                  150000 non-null float64
+v_7                  150000 non-null float64
+v_8                  150000 non-null float64
+v_9                  150000 non-null float64
+v_10                 150000 non-null float64
+v_11                 150000 non-null float64
+v_12                 150000 non-null float64
+v_13                 150000 non-null float64
+v_14                 150000 non-null float64
+dtypes: float64(21), int64(11)
+memory usage: 36.6 MB
+
+缺失数据及个数：
+ Unnamed: 0.1             0
+SaleID                   0
+name                     0
+regDate                  0
+model                    1
+brand                    0
+bodyType              4506
+fuelType              8680
+gearbox               5981
+power                    0
+kilometer                0
+notRepairedDamage    24324
+regionCode               0
+seller                   0
+offerType                0
+creatDate                0
+price                    0
+v_0                      0
+v_1                      0
+v_2                      0
+v_3                      0
+v_4                      0
+v_5                      0
+v_6                      0
+v_7                      0
+v_8                      0
+v_9                      0
+v_10                     0
+v_11                     0
+v_12                     0
+v_13                     0
+v_14                     0
+dtype: int64
+</code></pre></div></div>
+
+<p>各属性说明如下：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Field</strong></th>
+      <th style="text-align: center"><strong>Description</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">SaleID</td>
+      <td style="text-align: center">交易ID，唯一编码</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">name</td>
+      <td style="text-align: center">汽车交易名称，已脱敏</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">regDate</td>
+      <td style="text-align: center">汽车注册日期，例如20160101，2016年01月01日</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">model</td>
+      <td style="text-align: center">车型编码，已脱敏</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">brand</td>
+      <td style="text-align: center">汽车品牌，已脱敏</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">bodyType</td>
+      <td style="text-align: center">车身类型：豪华轿车：0，微型车：1，厢型车：2，大巴车：3，敞篷车：4，双门汽车：5，商务车：6，搅拌车：7</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">fuelType</td>
+      <td style="text-align: center">燃油类型：汽油：0，柴油：1，液化石油气：2，天然气：3，混合动力：4，其他：5，电动：6</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">gearbox</td>
+      <td style="text-align: center">变速箱：手动：0，自动：1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">power</td>
+      <td style="text-align: center">发动机功率：范围 [ 0, 600 ]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">kilometer</td>
+      <td style="text-align: center">汽车已行驶公里，单位万km</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">notRepairedDamage</td>
+      <td style="text-align: center">汽车有尚未修复的损坏：是：0，否：1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">regionCode</td>
+      <td style="text-align: center">地区编码，已脱敏</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">seller</td>
+      <td style="text-align: center">销售方：个体：0，非个体：1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">offerType</td>
+      <td style="text-align: center">报价类型：提供：0，请求：1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">creatDate</td>
+      <td style="text-align: center">汽车上线时间，即开始售卖时间</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">price</td>
+      <td style="text-align: center">二手车交易价格（预测目标）</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">v系列特征</td>
+      <td style="text-align: center">匿名特征，包含v0-14在内15个匿名特征</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="23-数据预处理">2.3 数据预处理</h4>
+
+<p>上述数据信息显示存在缺失值，利用属性的相关关系来填补。选择拉格朗日插值方法——最近邻插值法对缺失值进行填补。下面展示存在缺失值属性的填补前后可视化对比：</p>
+
+<p>车身类型：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>before
+count    145494.000000
+mean          1.792369
+std           1.760640
+min           0.000000
+25%           0.000000
+50%           1.000000
+75%           3.000000
+max           7.000000
+Name: bodyType, dtype: float64
+
+after
+count    150000.000000
+mean          1.791493
+std           1.760303
+min           0.000000
+25%           0.000000
+50%           1.000000
+75%           3.000000
+max           7.000000
+Name: bodyType, dtype: float64
+</code></pre></div></div>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/bodytype.png" alt=""></p>
+
+<p>燃料类型：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>before
+count    141320.000000
+mean          0.375842
+std           0.548677
+min           0.000000
+25%           0.000000
+50%           0.000000
+75%           1.000000
+max           6.000000
+Name: fuelType, dtype: float64
+
+after
+count    150000.000000
+mean          0.375767
+std           0.548581
+min           0.000000
+25%           0.000000
+50%           0.000000
+75%           1.000000
+max           6.000000
+Name: fuelType, dtype: float64
+</code></pre></div></div>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/fueltype.png" alt=""></p>
+
+<p>变速箱类型：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>before
+count    144019.000000
+mean          0.224943
+std           0.417546
+min           0.000000
+25%           0.000000
+50%           0.000000
+75%           0.000000
+max           1.000000
+Name: gearbox, dtype: float64
+
+after
+count    150000.000000
+mean          0.225213
+std           0.417724
+min           0.000000
+25%           0.000000
+50%           0.000000
+75%           0.000000
+max           1.000000
+Name: gearbox, dtype: float64
+</code></pre></div></div>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/gearbox.png" alt=""></p>
+
+<p>是否有未修复损伤：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>before
+count    125676.000000
+mean          0.113904
+std           0.317696
+min           0.000000
+25%           0.000000
+50%           0.000000
+75%           0.000000
+max           1.000000
+Name: notRepairedDamage, dtype: float64
+
+after
+count    150000.000000
+mean          0.114247
+std           0.318112
+min           0.000000
+25%           0.000000
+50%           0.000000
+75%           0.000000
+max           1.000000
+Name: notRepairedDamage, dtype: float64
+</code></pre></div></div>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/notrepaireddamage.png" alt=""></p>
+
+<p>缺失值填补后，对数据进行探索性分析。</p>
+
+<h3 id="3-数据分析与可视化">3. 数据分析与可视化</h3>
+
+<p>对不同列数据进行统计分析并可视化：</p>
+<h4 id="31-标称属性">3.1 标称属性</h4>
+
+<p>分别对model、brand、bodyType、fuelType、gearbox、notRepairedDamage、regionCode、seller、offerType进行柱状图可视化：</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/model.png" alt=""></p>
+
+<p>对于model属性，其不同标签数量分布较为分散，其按从多到少排列的柱状图构成的曲线与反比例函数相似。</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/brand.png" alt=""></p>
+
+<p>对于brand属性，其不同标签数量分布较为分散，但总体集中于标签0、4、14、10、1 。其中数量最多的品牌标签为0，数量约为第二名的两倍。</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/bodyType0.png" alt=""></p>
+
+<p>对于bodyType属性，数量最多的三种类型为豪华轿车：0、微型车：1、厢型车：2。搅拌车：7交易数量最少</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/fuelType0.png" alt=""></p>
+
+<p>对于fuelType属性，可见汽油（标签0）数目最多、柴油（标签1）其次、其余类型数目较少。</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/gearbox0.png" alt=""></p>
+
+<p>对于gearbox属性，其为二值属性且以手动（0标签）为主，自动（1）标签为辅。</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/nRT.png" alt=""></p>
+
+<p>对于notRepairedDamage属性，其为二值属性且以0标签为主。大多数二手车在交易时存在未修复的车损。</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/regioncode.png" alt=""></p>
+
+<p>对于regionCode属性，除数量最多的地区419和次多的地区764外，其余各地区数量分布较为均匀。</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/seller.png" alt=""></p>
+
+<p>对于seller属性，几乎全部为个体（标签0），存在个别车辆的卖家为非个体（标签1）。</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/offertype.png" alt=""></p>
+
+<p>对于offerType属性，均为提供类型（标签0），无请求类型（标签1）。</p>
+
+<h4 id="32-数值属性">3.2 数值属性</h4>
+
+<p>分别对regDate、power、kilometer、createDate、price 通过绘制盒图、散点图和直方图来可视化数据：</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/regdate0.png" alt=""></p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/regdate1.png" alt=""></p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/regdate2.png" alt=""></p>
+
+<p>以上为regDate属性的盒图、散点图和直方图。由直方图走势可看出二手车注册量自1990年至2000年呈递增态势，2000至2005年呈谷形，自2005年之后注册量走低。</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/power0.png" alt=""></p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/power1.png" alt=""></p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/power2.png" alt=""></p>
+
+<p>观察盒图可以发现power存在较多异常点，因此删除数值较小或者数值较大的异常点，删除后再重新绘制盒图、散点图以及直方图。结果如下：</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/POWER_0.png" alt="POWER_0"></p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/POWER_1.png" alt="POWER_1"></p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/POWER_2.png" alt="POWER_2"></p>
+
+<p>可以观察到散点图和直方图的数据较为分散。发动机功率主要分布在中低功率区间。</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/kilo0.png" alt=""></p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/kilo1.png" alt=""></p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/kilo2.png" alt=""></p>
+
+<p>以上为kilometer属性的盒图、散点图和直方图。从散点图和直方图可看出公里数分布呈离散型，从盒图和直方图可看出汽车行驶公里数多位于12-15万公里间。</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/createdate0.png" alt=""></p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/createdate1.png" alt=""></p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/createdate2.png" alt=""></p>
+
+<p>以上为createDate属性的盒图、散点图和直方图。可以看出汽车上线时间主要集中于2016年初，一些汽车的上线时间集中于2015年初。</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/price0.png" alt=""></p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/price1.png" alt=""></p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/price2.png" alt=""></p>
+
+<p>以上为price属性的盒图、散点图和直方图。从三图中可共同看出数据集中于0值，从直方图走势可看出价格由低到高交易数量逐渐减少，人们比较倾向于选择较低价格的二手车。</p>
+
+<h4 id="33-特征选择">3.3 特征选择</h4>
+
+<p>对属性进行特征选择，发现属性中存在两个日期，一个是销售日期，一个是注册日期，这两个日期单独来看与价格的相关性不大，但是根据这两个属性可以计算得出汽车的使用时间，汽车的新旧程度对价格的影响会很大。</p>
+
+<p>并且汽车的车型也与汽车的价格有着密切的关系。因此需要计算每种车型的销售数量、平均价格、最高价格、最低价格以及中间价格，并作为属性加入每一条销售记录中。</p>
+
+<p>最后备选的属性有’usedTime’,’power’, ‘kilometer’, ‘bodyTypeAmount’, ‘bodyTypePriceMax’, ‘bodyTypePriceMin’, ‘bodyTypePriceAverage’这7个属性，分别计算它们与价格属性之间的相似度。观察到’usedTime’,’power’, ‘kilometer’, ‘bodyTypePriceMin’，’bodyTypePriceAverage’这几个属性与price之间的相似度的绝对值均大于0.3。因此可以考虑选择作为属性去训练模型。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Correlation of Numeric Features with Price
+name                     correlation
+usedTime                 -0.7536022453192838
+power                    0.5773425426332196
+kilometer                -0.4097783640876424
+bodyTypeAmount           -0.1977078836415173
+bodyTypePriceMax         -0.1095324062658541
+bodyTypePriceMin         0.34554823124408146
+bodyTypePriceAverage     0.3524069606523509
+</code></pre></div></div>
+<p>或者我们可以把属性之间的关系绘制成编码矩阵。</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/correlation.png" alt=""></p>
+
+<h3 id="4-回归与预测">4. 回归与预测</h3>
+
+<h4 id="41-模型选取">4.1 模型选取</h4>
+
+<p>本选题要求预测二手汽车的交易价格。该问题可通过对训练集数据进行回归来构建预测模型，并将测试集作为输入进行预测。</p>
+
+<p>首先，依据属性特点与现实意义，选择’usedTime’,’power’, ‘kilometer’, ‘bodyTypePriceMin’，’bodyTypePriceAverage’五个属性以及匿名的 ‘v_0’~ ‘v_14’属性作为输入。然后分别使用目前广为使用的XGBoost回归算法和LightGBM回归算法对输入与价格进行回归，得到价格预测模型。</p>
+
+<p>XGBoost是在 Gradient Boosting 框架下实现机器学习算法，可以快速准确地解决许多数据科学问题；而LightGBM算法则相比于XGBoost要更加快速且准确。为了进一步提升预测准确度，将此两种模型进行加权融合，得到最终的预测模型。</p>
+
+<p>最后，对模型进行评价与预测。</p>
+
+<h4 id="42-预测结果与评价">4.2 预测结果与评价</h4>
+
+<p>本选题要求预测二手汽车的交易价格。该问题可通过对训练集数据进行回归来构建预测模型，并将测试集作为输入进行预测。</p>
+
+<p>模型的评价标准为MAE：</p>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/mae.png" alt=""></p>
+
+<p>利用xgb进行五折交叉验证查看模型的参数效果：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## xgb-Model
+xgr = xgb.XGBRegressor(n_estimators=120, learning_rate=0.1, gamma=0, subsample=0.8,\
+        colsample_bytree=0.9, max_depth=7) #,objective ='reg:squarederror'
+
+scores_train = []
+scores = []
+
+## 5折交叉验证方式
+sk=StratifiedKFold(n_splits=5,shuffle=True,random_state=0)
+for train_ind,val_ind in sk.split(X_data,Y_data):
+    
+    train_x=X_data.iloc[train_ind].values
+    train_y=Y_data.iloc[train_ind]
+    val_x=X_data.iloc[val_ind].values
+    val_y=Y_data.iloc[val_ind]
+    
+    xgr.fit(train_x,train_y)
+    pred_train_xgb=xgr.predict(train_x)
+    pred_xgb=xgr.predict(val_x)
+    
+    score_train = mean_absolute_error(train_y,pred_train_xgb)
+    scores_train.append(score_train)
+    score = mean_absolute_error(val_y,pred_xgb)
+    scores.append(score)
+
+print('Train mae:',np.mean(score_train))
+print('Val mae',np.mean(scores))
+</code></pre></div></div>
+<p>训练集和验证集的MAE分别为：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Train mae: 628.7640032655389
+Val mae 714.982737201206
+</code></pre></div></div>
+
+<p>分别定义xgb和lgb模型函数：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def build_model_xgb(x_train,y_train):
+    model = xgb.XGBRegressor(n_estimators=150, learning_rate=0.1, gamma=0, subsample=0.8,\
+        colsample_bytree=0.9, max_depth=7) #, objective ='reg:squarederror'
+    model.fit(x_train, y_train)
+    return model
+
+def build_model_lgb(x_train,y_train):
+    estimator = lgb.LGBMRegressor(num_leaves=127,n_estimators = 150)
+    param_grid = {
+        'learning_rate': [0.01, 0.05, 0.1, 0.2],
+    }
+    gbm = GridSearchCV(estimator, param_grid)
+    gbm.fit(x_train, y_train)
+    return gbm
+</code></pre></div></div>
+<p>切分数据集（Train,Val）进行模型训练，评价和预测：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Split data with val
+x_train,x_val,y_train,y_val = train_test_split(X_data,Y_data,test_size=0.3)
+print('Train lgb...')
+model_lgb = build_model_lgb(x_train,y_train)
+val_lgb = model_lgb.predict(x_val)
+MAE_lgb = mean_absolute_error(y_val,val_lgb)
+print('MAE of val with lgb:',MAE_lgb)
+
+print('Predict lgb...')
+model_lgb_pre = build_model_lgb(X_data,Y_data)
+subA_lgb = model_lgb_pre.predict(X_test)
+print('Sta of Predict lgb:')
+Sta_inf(subA_lgb)
+</code></pre></div></div>
+
+<p>lgb预测结果的MAE以及预测数据的统计特征如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MAE of val with lgb: 690.5215735944785
+
+Sta of Predict lgb:
+_min -1339.23962259458
+_max: 91324.72689961622
+_mean 5909.949573700309
+_ptp 92663.9665222108
+_std 7352.61037521163
+_var 54060879.3296697
+</code></pre></div></div>
+
+<p>同理，xgb预测结果的MAE和预测数据的统计特征如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MAE of val with xgb: 712.259832479318
+
+Sta of Predict xgb:
+_min -378.67053
+_max: 91137.12
+_mean 5909.634
+_ptp 91515.79
+_std 7343.3955
+_var 53925460.0
+</code></pre></div></div>
+
+<p>由此可见lgb的预测准确度更高。下面对两个模型的结果进行加权融合：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## 这里我们采取了简单的加权融合的方式
+val_Weighted = (1-MAE_lgb/(MAE_xgb+MAE_lgb))*val_lgb+(1-MAE_xgb/(MAE_xgb+MAE_lgb))*val_xgb
+val_Weighted[val_Weighted&lt;0]=10 # 由于我们发现预测的最小值有负数，而真实情况下，price为负是不存在的，由此我们进行对应的后修正
+print('MAE of val with Weighted ensemble:',mean_absolute_error(y_val,val_Weighted))
+sub_Weighted = (1-MAE_lgb/(MAE_xgb+MAE_lgb))*subA_lgb+(1-MAE_xgb/(MAE_xgb+MAE_lgb))*subA_xgb
+
+## 查看预测值的统计进行
+plt.hist(Y_data)
+plt.show()
+plt.close()
+</code></pre></div></div>
+
+<p><img src="./二手车交易价格预测-天池比赛_files/predict.png" alt=""></p>
+
+<p>此图为预测的价格分布（橙）和训练集价格分布（蓝），该结果显示对测试集各项输入属性的预测价格普遍在10000以下，且数量随价格升高而降低，这一趋势与训练集数据的价格趋势是一致的。</p>
+
+<p>融合后模型的MAE如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MAE score:674.3673
+</code></pre></div></div>
+
+<p>该值小于lgb和xgb的结果，由此可见加权融合后的预测模型更为准确。</p>
+
+<h3 id="5-任务分配">5. 任务分配</h3>
+
+<ul>
+  <li>王宇彬，于明菲：数据的收集和预处理，数据分析，数据可视化，协助完成模型设计与实现；</li>
+  <li>韩秉峰，赵柏翔：算法实现，模型设计；</li>
+  <li>孙心桐：结果分析与汇总，文档编写；</li>
+</ul>
+
+
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <div class="footer-col-1 column">
+      <ul>
+        
+        
+        
+        <li>
+          <a href="mailto:simontangbit@bit.edu.cn">simontangbit@bit.edu.cn</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+        
+    </div>
+
+    <div class="footer-col-3 column">
+      
+    </div>
+
+  </div>
+
+</footer>
+
+
+    <!-- mathjax -->
+    <script src="./二手车交易价格预测-天池比赛_files/MathJax.js" id=""></script>
+    
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
