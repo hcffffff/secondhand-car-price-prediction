@@ -32,4 +32,5 @@
    2. [采用LGB+XGBoost](https://github.com/WillianWang2025/UsedCarPricePrediction/blob/master/LGB_and_XGBoost.ipynb)
 7. 待办：
    + 初步研究框架+算法确定
-   + 数据集的获取
+   + 数据集的爬取可能性分析，几种feature，地区等因素，初步的数据集
+   + 开题报告大致写完，目的和方法
