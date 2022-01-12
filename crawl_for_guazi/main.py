@@ -1,0 +1,53 @@
+from pandas.io import html
+import requests
+import os, re
+import json
+import pandas as pd
+import html
+
+car_brands = ["tesila", "weila", "lixiang", "xiaopeng"]
+car_brands_chn = ["特斯拉", "蔚来", "理想", "小鹏"]
+
+url = 'https://mapi.guazi.com/car-source/carList/pcList?minor={car_brand}&sourceType=&ec_buy_car_list_ab=&location_city=&district_id=&tag=-1&license_date=&auto_type=&driving_type=&gearbox=&road_haul=&air_displacement=&emission=&car_color=&guobie=&bright_spot_config=&seat=&fuel_type=&order=&priceRange=0,-1&tag_types=&diff_city=&intention_options=&initialPriceRange=&monthlyPriceRange=&transfer_num=&car_year=&carid_qigangshu=&carid_jinqixingshi=&cheliangjibie=&key_word={car_brand_chn}&page={pg}&pageSize=100&city_filter={ct}&city={ct}&guazi_city={ct}&qpres=484192054210134016&versionId=0.0.0.0&osv=IOS&platfromSource=wap'
+
+head = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36'}
+ 
+
+def deal_page(url, car_brand, car_brand_chn, pg, ct, head):
+    '''
+    对筛选数据页的初步处理，获取
+    '''
+    url1 = url.format(car_brand = str(car_brands[0]), car_brand_chn = str(car_brands_chn[0]), pg = 1, ct = 12)
+    page = requests.get(url1,headers=head,timeout=3)
+    # f = open("./crawl_for_guazi/test.json", 'w')
+    # f.write(page.text)
+    page_text_dict = json.loads(page.text)
+    page, total_page = page_text_dict["data"]["page"], page_text_dict["data"]["totalPage"]
+    while page <= total_page:
+        get_single_page_info(url, car_brand, car_brand_chn, page, ct, head)
+        page += 1
+
+def get_single_page_info(url, car_brand, car_brand_chn, pg, ct, head):
+    '''
+    获取每一页的车辆数据信息（每一页大概是20辆车）
+    '''
+    url = url.format(car_brand = str(car_brand), car_brand_chn = str(car_brand_chn), pg = pg, ct = ct)
+    page = requests.get(url,headers=head,timeout=3)
+    page_text = json.loads(page.text)
+    df = pd.DataFrame()
+    for single_car in page_text["data"]["postList"]:
+        print(single_car["title"], end="\n")
+        temp_df = pd.DataFrame([[single_car["title"], single_car["clue_id"], single_car["license_date"], single_car["buyOutPrice"]]], columns=['title', 'clueID', 'license_date', 'buyOutPrice'])
+        df = pd.concat([df, temp_df])
+    df.reset_index()
+    print(df.head(5))
+
+
+def save_info(df, file):
+    return
+
+def page_cover(url, car_brand, car_brand_chn, pg, ct, head):
+    return
+
+deal_page(url, car_brands[0], car_brands_chn[0], 1, 12, head)
+#print(html.unescape("&#58928;.&#59854;").encode("utf-8"))
