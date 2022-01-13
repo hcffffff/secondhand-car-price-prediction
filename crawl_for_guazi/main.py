@@ -3,7 +3,8 @@ import requests
 import os, re
 import json
 import pandas as pd
-import html
+from deal_anti_crawl import deal_str
+
 
 car_brands = ["tesila", "weila", "lixiang", "xiaopeng"]
 car_brands_chn = ["特斯拉", "蔚来", "理想", "小鹏"]
@@ -18,6 +19,7 @@ def deal_page(url, car_brand, car_brand_chn, pg, ct, head):
     对筛选数据页的初步处理，获取
     '''
     url1 = url.format(car_brand = str(car_brands[0]), car_brand_chn = str(car_brands_chn[0]), pg = 1, ct = 12)
+    print(url1)
     page = requests.get(url1,headers=head,timeout=3)
     # f = open("./crawl_for_guazi/test.json", 'w')
     # f.write(page.text)
@@ -37,7 +39,7 @@ def get_single_page_info(url, car_brand, car_brand_chn, pg, ct, head):
     df = pd.DataFrame()
     for single_car in page_text["data"]["postList"]:
         print(single_car["title"], end="\n")
-        temp_df = pd.DataFrame([[single_car["title"], single_car["clue_id"], single_car["license_date"], single_car["buyOutPrice"]]], columns=['title', 'clueID', 'license_date', 'buyOutPrice'])
+        temp_df = pd.DataFrame([[single_car["title"], single_car["clue_id"], single_car["license_date"], single_car["price"]]], columns=['title', 'clueID', 'license_date', 'price'])
         df = pd.concat([df, temp_df])
     df.reset_index()
     print(df.head(5))
@@ -49,5 +51,6 @@ def save_info(df, file):
 def page_cover(url, car_brand, car_brand_chn, pg, ct, head):
     return
 
-deal_page(url, car_brands[0], car_brands_chn[0], 1, 12, head)
-#print(html.unescape("&#58928;.&#59854;").encode("utf-8"))
+# deal_page(url, car_brands[0], car_brands_chn[0], 1, 12, head)
+print(deal_str("&#60146;&#58928;.&#58670;&#59854;万"))
+print(deal_str("21.66万"))
