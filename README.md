@@ -84,6 +84,17 @@
          color: #999;
          padding: 2px;">很简单verifytoken的加密函数，并可以在控制台看到两个字段的数值</div>
       </center>
+   5. verify_token的计算方法为：`md5('guaziclientuc' + md5(ttt + '' + stringifyParams))`，其中`ttt`为unix时间戳，`stringifyParams`为`'ca_n=default...rceFrom=wap&versionId=0.0.0.0'`，我们根据该公式计算token数值并验证真实性如图：
+      <center>
+         <img style="border-radius: 0.3125em;
+         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+         src="crawl_for_guazi/figures/get_verifytoken5.png">
+         <br>
+         <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+         display: inline-block;
+         color: #999;
+         padding: 2px;">可以看见控制台中的手算token与标头中的token完全一样</div>
+      </center>
 
 
 ## 算法与模型：
