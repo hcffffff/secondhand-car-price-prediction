@@ -3,7 +3,7 @@ import requests
 import os, re
 import json
 import pandas as pd
-from deal_anti_crawl import deal_str
+from spider import get_carInfo
 
 
 car_brands = ["tesila", "weila", "lixiang", "xiaopeng"]
@@ -14,15 +14,15 @@ url = 'https://mapi.guazi.com/car-source/carList/pcList?minor={car_brand}&source
 head = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36'}
  
 
-def deal_page(url, car_brand, car_brand_chn, pg, ct, head):
+def deal_page(url, car_brand, car_brand_chn, ct, head):
     '''
     对筛选数据页的初步处理，获取
     '''
     url1 = url.format(car_brand = str(car_brands[0]), car_brand_chn = str(car_brands_chn[0]), pg = 1, ct = 12)
     print(url1)
     page = requests.get(url1,headers=head,timeout=3)
-    # f = open("./crawl_for_guazi/test.json", 'w')
-    # f.write(page.text)
+    f = open("./crawl_for_guazi/test.json", 'w')
+    f.write(page.text)
     page_text_dict = json.loads(page.text)
     page, total_page = page_text_dict["data"]["page"], page_text_dict["data"]["totalPage"]
     while page <= total_page:
@@ -38,11 +38,11 @@ def get_single_page_info(url, car_brand, car_brand_chn, pg, ct, head):
     page_text = json.loads(page.text)
     df = pd.DataFrame()
     for single_car in page_text["data"]["postList"]:
-        print(single_car["title"], end="\n")
-        temp_df = pd.DataFrame([[single_car["title"], single_car["clue_id"], single_car["license_date"], single_car["price"]]], columns=['title', 'clueID', 'license_date', 'price'])
+        print(single_car["title"] + "clueid = " + str(single_car["clue_id"]), end="\n")
+        temp_df = pd.DataFrame([[single_car["title"], single_car["clue_id"]]], columns=['title', 'clueID'])
         df = pd.concat([df, temp_df])
-    df.reset_index()
-    print(df.head(5))
+    # print(df.head(5))
+    print('\n')
 
 
 def save_info(df, file):
@@ -51,6 +51,4 @@ def save_info(df, file):
 def page_cover(url, car_brand, car_brand_chn, pg, ct, head):
     return
 
-# deal_page(url, car_brands[0], car_brands_chn[0], 1, 12, head)
-print(deal_str("&#60146;&#58928;.&#58670;&#59854;万"))
-print(deal_str("21.66万"))
+deal_page(url, car_brands[0], car_brands_chn[0], 12, head)

@@ -36,9 +36,55 @@
 该网页url中`minor=tesila`可以更改为其他名称（如weila-蔚来，baoma-宝马），并修改`keyword`关键词，实际上`keyword=%E7%89%B9%E6%96%AF%E6%8B%89`中为UTF-8格式，直接解码就是中文特斯拉。我尝试将`minor`改为`weilai`，并将`keyword`改为`%E8%94%9A%E6%9D%A5%0A`（即“蔚来”的UTF-8格式）便可获取到蔚来相关的数据。同时，可以修改`city_filter`，`city`，`guazi_city`即可更改城市，例如`city=13`为上海。将注意此时的网页是很多项目浏览的网页，并不能获取到车辆的详细信息。
 2. 进入上述网页后，转换为json格式后，可以看到`post_list`中包含了一个网页里所有的可用车辆，可以轻易得到`clue_id`，将其添加到`https://www.guazi.com/Detail?clueId=`之后可以得到该车辆的详细信息。
 3. guazi网页采用的反爬虫方法：有一些字符是以HTML实体的元素存储的，但解码出来是一个方框，比如`"price": "&#58928;&#58397;.&#59537;&#59854;万"`，经过HTML解码后得到".万"，可见并不可用，再将该文字进行UTF-8解码得到"\&#xE630;\&#xE41D;.\&#xE891;\&#xE9CE;\&#x4E07;"，实际上还是不可用的，因为有反爬虫的功能。但是进行后台抓包可以获取到一个"gzfont4.woff2"的字体文件，进行读取后可以看到：
-![gzfont](crawl_for_guazi/gzfont4_figure.png)
+![gzfont](crawl_for_guazi/figures/gzfont_figure1.png)
 很清楚，每一个unicode编码都对应一个数字字体，所以无法被解码出来。故我们只需要将字体文件中的对应关系找到即可。但是问题又出现了，每一天的gzfont字体文件是不同的，即今天可能是gzfont1，明天可能是gzfont2。比如一个gzfont3文件：
-![gzfont](crawl_for_guazi/gzfont3_figure.png)
+![gzfont](crawl_for_guazi/figures/gzfont_figure2.png)
+1. 经过一番资料查询和学习后，我发现这样的情况是因为瓜子网站采用了js签名的反爬虫的方法，因为如果要获取字体再反解析的话会很麻烦，所以改变方法，采用解析网页js，然后获取他的签名加密方法，然后模仿加密方法获取到签名数据，再根据此获取到源文件，具体方法如下：
+   1. 在页面加载的内容中可以看到一个显示包含车辆所有数据（名称、价格、排量、里程等）的文稿，但遗憾的是直接请求该网址会显示签名验证失败。
+      <center>
+         <img style="border-radius: 0.3125em;
+         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+         src="crawl_for_guazi/figures/get_verifytoken1.png">
+         <br>
+         <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+         display: inline-block;
+         color: #999;
+         padding: 2px;">包含车辆数据的文档</div>
+      </center>
+   2. 继续查询该文档的请求标头，发现一个字段是其他常规文档没有的：`verify-token`，上网查询后发现就是加密的签名字段，那么只要能用代码实现出这个签名字段就可以获取到该文档数据。
+      <center>
+         <img style="border-radius: 0.3125em;
+         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+         src="crawl_for_guazi/figures/get_verifytoken2.png">
+         <br>
+         <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+         display: inline-block;
+         color: #999;
+         padding: 2px;">高亮部分为签名的信息</div>
+      </center>
+   3. 继续搜索字段`verify-token`可以在js文档中获得该字段数据的获取方法，并得到ye就是该function中的window，然后我们在当前js文件中打几个断点刷新测试一下，看看具体的计算方法：
+      <center>
+         <img style="border-radius: 0.3125em;
+         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+         src="crawl_for_guazi/figures/get_verifytoken3.png">
+         <br>
+         <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+         display: inline-block;
+         color: #999;
+         padding: 2px;">高亮部分为verifytoken的信息</div>
+      </center>
+   4. 终于，在单步调试中可以确定加密字段只与请求时间有关，将下图中的`1642862186`以秒为单位使用unix时间戳转换，恰好得到刚刚的时间`2022-01-22 22:36:26`，而md5加密方法只需将js文档中的内容拷贝下来即可：
+      <center>
+         <img style="border-radius: 0.3125em;
+         box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+         src="crawl_for_guazi/figures/get_verifytoken4.png">
+         <br>
+         <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+         display: inline-block;
+         color: #999;
+         padding: 2px;">很简单verifytoken的加密函数，并可以在控制台看到两个字段的数值</div>
+      </center>
+
 
 ## 算法与模型：
 1. 参考

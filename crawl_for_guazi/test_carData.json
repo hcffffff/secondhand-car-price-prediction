@@ -1,0 +1,502 @@
+{
+    "baseInfo": {
+        "carOtherInfo": {
+            "saleType": 0,
+            "blackTagCarTest": false,
+            "testDrive": false,
+            "clueId": 115459575,
+            "minorId": 102715,
+            "minorUrl": "tesila",
+            "minorName": "\u7279\u65af\u62c9",
+            "tagId": 162011,
+            "tagUrl": "model-3-60",
+            "tagName": "Model 3",
+            "storeId": 21568,
+            "carSourceStatus": 0,
+            "productStatus": {
+                "productStatus": 10,
+                "saleMode": 1,
+                "showStatus": 1
+            },
+            "collectionAbResult": "B",
+            "isNewUser": true,
+            "popUpTime": "5",
+            "remainTime": "10",
+            "stopTime": "8",
+            "newAutoTypeId": 12
+        },
+        "userLogisticsInfo": {
+            "plateCityId": 12,
+            "receiptCityId": 12,
+            "plateCityName": "\u5317\u4eac",
+            "receiptCityName": "\u5317\u4eac",
+            "logisticsFree": 0
+        },
+        "browsingRecords": {
+            "puid": 3014893047,
+            "licenseDate": 2020,
+            "licenseMonth": 5,
+            "roadHaul": 29800,
+            "thumbImg": "https://image.guazistatic.com/gz01220102/10/43/cade63ff987fbf3531afcd978b466165.jpg@base@tag=imgScale&q=88&c=1&w=190&h=144&m=2"
+        },
+        "pageOtherInfo": {
+            "ecPilotCity": 1,
+            "consultPhone": "4000696514",
+            "preSellStatus": false,
+            "reserveStatus": false,
+            "saleScene": 1,
+            "exposureStatus": 1,
+            "buyInfoShow": 1
+        }
+    },
+    "carCommodityInfo": {
+        "basicInfo": {
+            "titleDesc": "\u7279\u65af\u62c9 Model 3 2020\u6b3e \u6807\u51c6\u7eed\u822a\u540e\u9a71\u5347\u7ea7\u7248",
+            "carLabelList": [
+                {
+                    "title": "\u53ef\u8fc1\u5317\u4eac",
+                    "popup": {
+                        "name": "\u53ef\u8fc1\u5317\u4eac",
+                        "text": "\u767b\u8bb0\u6392\u653e\u4fe1\u606f\u7b26\u5408\u5317\u4eac\u5730\u533a\u8fc1\u5165\u653f\u7b56\u8981\u6c42\uff0c\u6700\u7ec8\u7ed3\u679c\u4ee5\u8fc1\u5165\u5730\u8f66\u7ba1\u6240\u4e3a\u51c6"
+                    },
+                    "labelType": 1
+                }, {
+                    "title": "\u7ef4\u4fdd\u8bb0\u5f55",
+                    "popup": {
+                        "name": "\u7ef4\u4fdd\u8bb0\u5f55",
+                        "text": "\u6709\u6b63\u89c4\u53ef\u67e5\u7684\u7ef4\u4fee\u548c\u4fdd\u517b\u8bb0\u5f55"
+                    },
+                    "labelType": 6
+                }
+            ],
+            "titleTag": "\u5546\u5bb6",
+            "subTitleTag": "\u65b0\u80fd\u6e90",
+            "tagDesc": "\u4e00\u952e\u4e0b\u5355 \u8f66\u5230\u4ed8\u6b3e",
+            "imageUrl": "https://image.guazistatic.com/gz01220102/10/43/cade63ff987fbf3531afcd978b466165.jpg@base@tag=imgScale&q=88&c=1&w=190&h=144&m=2&q=88&c=1&w=190&h=144&m=2"
+        },
+        "bannerInfo": {
+            "imageList": [
+                {
+                    "category": "\u8f66\u8eab\u5916\u89c2",
+                    "images": [
+                        {
+                            "imgUrl": "https://image.guazistatic.com/gz01220102/10/43/cade63ff987fbf3531afcd978b466165.jpg@base@tag=imgScale&q=88&c=1&w=750&h=500&m=2&q=88&c=1&w=750&h=500&m=2",
+                            "ind": 1,
+                            "thumb": "https://image.guazistatic.com/gz01220102/10/43/cade63ff987fbf3531afcd978b466165.jpg@base@tag=imgScale&q=88&c=1&w=190&h=144&m=2&q=88&c=1&w=190&h=144&m=2"
+                        },
+                        {
+                            "imgUrl": "https://image1.guazistatic.com/qn220102104331921c1236a40647ddf6849c8eb9ff702b.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 2,
+                            "thumb": "https://image1.guazistatic.com/qn220102104331921c1236a40647ddf6849c8eb9ff702b.jpg?imageView2/1/w/190/h/144/q/88"
+                        },
+                        {
+                            "imgUrl": "https://image1.guazistatic.com/qn2201021043320032645d1dd13b2b6548618fec0341a2.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 3,
+                            "thumb": "https://image1.guazistatic.com/qn2201021043320032645d1dd13b2b6548618fec0341a2.jpg?imageView2/1/w/190/h/144/q/88"
+                        },
+                        {
+                            "imgUrl": "https://image.guazistatic.com/gz01220102/10/43/4b8beb07c91714c9844ffcd9d3521fc7.jpg@base@tag=imgScale&q=88&c=1&w=750&h=500&m=2&q=88&c=1&w=750&h=500&m=2",
+                            "ind": 4,
+                            "thumb": "https://image.guazistatic.com/gz01220102/10/43/4b8beb07c91714c9844ffcd9d3521fc7.jpg@base@tag=imgScale&q=88&c=1&w=190&h=144&m=2&q=88&c=1&w=190&h=144&m=2"
+                        }, {
+                            "imgUrl": "https://image.guazistatic.com/gz01220102/10/43/e046f369984936ed65e97c9015cf374a.jpg@base@tag=imgScale&q=88&c=1&w=750&h=500&m=2&q=88&c=1&w=750&h=500&m=2",
+                            "ind": 5,
+                            "thumb": "https://image.guazistatic.com/gz01220102/10/43/e046f369984936ed65e97c9015cf374a.jpg@base@tag=imgScale&q=88&c=1&w=190&h=144&m=2&q=88&c=1&w=190&h=144&m=2"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220102104337b2a1ab917c5f9d10736671f925918047.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 6,
+                            "thumb": "https://image1.guazistatic.com/qn220102104337b2a1ab917c5f9d10736671f925918047.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image.guazistatic.com/gz01220102/10/43/5a4825c5004ee9177f648e57d9f23da2.jpg@base@tag=imgScale&q=88&c=1&w=750&h=500&m=2&q=88&c=1&w=750&h=500&m=2",
+                            "ind": 7,
+                            "thumb": "https://image.guazistatic.com/gz01220102/10/43/5a4825c5004ee9177f648e57d9f23da2.jpg@base@tag=imgScale&q=88&c=1&w=190&h=144&m=2&q=88&c=1&w=190&h=144&m=2"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007a9175ff86da530564d2216f46bd7f3e4.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 8,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007a9175ff86da530564d2216f46bd7f3e4.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn22010115000731268035804d7961913588a24d0270f0.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 9,
+                            "thumb": "https://image1.guazistatic.com/qn22010115000731268035804d7961913588a24d0270f0.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn2201011500074d8cd3cf51f0063fa22c9f3304dac7db.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 10,
+                            "thumb": "https://image1.guazistatic.com/qn2201011500074d8cd3cf51f0063fa22c9f3304dac7db.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn2201011500072d14080e202d3bd0c11bb6e8cd6b1c55.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 34,
+                            "thumb": "https://image1.guazistatic.com/qn2201011500072d14080e202d3bd0c11bb6e8cd6b1c55.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007e92cd5820e7899e2e46cd7f38ecf90d2.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 35,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007e92cd5820e7899e2e46cd7f38ecf90d2.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn22010115000762df7ef7b043df5c37e3d8c570c00e8b.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 36,
+                            "thumb": "https://image1.guazistatic.com/qn22010115000762df7ef7b043df5c37e3d8c570c00e8b.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007df151aa9bc4d102ec76368aa562178c6.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 37,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007df151aa9bc4d102ec76368aa562178c6.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007e4b659626ef22b5914e845d3d01b0792.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 38,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007e4b659626ef22b5914e845d3d01b0792.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007721e4f5617d2d5beab3203c4e27b43c4.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 39,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007721e4f5617d2d5beab3203c4e27b43c4.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn2201011500071368ce0f4b9616a8e1ce211f5020f5b3.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 40,
+                            "thumb": "https://image1.guazistatic.com/qn2201011500071368ce0f4b9616a8e1ce211f5020f5b3.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn22010115000744b0296c2f7bfd9111f4997f7d6c3eb9.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 43,
+                            "thumb": "https://image1.guazistatic.com/qn22010115000744b0296c2f7bfd9111f4997f7d6c3eb9.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn2201011500077ea6d504c411da2c8e6d489ea789a9c6.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 46,
+                            "thumb": "https://image1.guazistatic.com/qn2201011500077ea6d504c411da2c8e6d489ea789a9c6.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn2201011500074837392d730a0d3eb21d7867f70b35ae.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 48,
+                            "thumb": "https://image1.guazistatic.com/qn2201011500074837392d730a0d3eb21d7867f70b35ae.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn2201011500078fba544abac4f0624c1c36f8fd7f71de.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 50,
+                            "thumb": "https://image1.guazistatic.com/qn2201011500078fba544abac4f0624c1c36f8fd7f71de.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007bcb235f09fa551642fca28d0a77427ea.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 51,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007bcb235f09fa551642fca28d0a77427ea.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn22010115000764c70e131264d4986bd264cc11d9c21e.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 52,
+                            "thumb": "https://image1.guazistatic.com/qn22010115000764c70e131264d4986bd264cc11d9c21e.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007972e8ca8bc59f43bb4371397d1b1c368.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 53,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007972e8ca8bc59f43bb4371397d1b1c368.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007c6f90d6f060e8b9ccda6518bb50aa6e5.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 54,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007c6f90d6f060e8b9ccda6518bb50aa6e5.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007c7ac863c649c7e9ffdce2df3f29e5d28.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 55,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007c7ac863c649c7e9ffdce2df3f29e5d28.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007ad52205cbface501d71f86ef5da0e3f7.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 56,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007ad52205cbface501d71f86ef5da0e3f7.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn2201011500077c168d0b6ab24bf6d05bed6f42285157.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 57,
+                            "thumb": "https://image1.guazistatic.com/qn2201011500077c168d0b6ab24bf6d05bed6f42285157.jpg?imageView2/1/w/190/h/144/q/88"
+                        }
+                    ],
+                    "type": 1
+                }, {
+                    "category": "\u4e2d\u63a7\u5185\u9970",
+                    "images": [
+                        {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007e7d38f03e6ea248b513bab3cb62c4381.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 11,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007e7d38f03e6ea248b513bab3cb62c4381.jpg?imageView2/1/w/190/h/144/q/88"
+                        },
+                        {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007823ddce8a1e8f17527f6a83283b242e1.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 12,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007823ddce8a1e8f17527f6a83283b242e1.jpg?imageView2/1/w/190/h/144/q/88"
+                        },
+                        {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007cf39b9c8a5b8fb2b8813411b748158b8.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 13,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007cf39b9c8a5b8fb2b8813411b748158b8.jpg?imageView2/1/w/190/h/144/q/88"
+                        },
+                        {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007b075b5def7e0967606e665de31775bdd.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 14,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007b075b5def7e0967606e665de31775bdd.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007d66eb43ad78ea3585428d58564038917.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 15,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007d66eb43ad78ea3585428d58564038917.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn22010115000758f69b4beaed0cd0eda606e7afec0928.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 16,
+                            "thumb": "https://image1.guazistatic.com/qn22010115000758f69b4beaed0cd0eda606e7afec0928.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn2201011500079360b87bd134c0db0267d959cbd3ec3b.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 17,
+                            "thumb": "https://image1.guazistatic.com/qn2201011500079360b87bd134c0db0267d959cbd3ec3b.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn2201011500076ce4e74bde2524e7f723322653889c91.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 18,
+                            "thumb": "https://image1.guazistatic.com/qn2201011500076ce4e74bde2524e7f723322653889c91.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007a0b126fa175c6ed8fef74e536ab2f354.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 19,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007a0b126fa175c6ed8fef74e536ab2f354.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn2201011500073bd05312fda4781361303a4407547f29.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 20,
+                            "thumb": "https://image1.guazistatic.com/qn2201011500073bd05312fda4781361303a4407547f29.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007527dfe45ffbc4f304efec19f0045a184.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 21,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007527dfe45ffbc4f304efec19f0045a184.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007650b5e6e3806de708e5ebd4f4f0dc6d5.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 22,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007650b5e6e3806de708e5ebd4f4f0dc6d5.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn2201011500075ac44a164ec4b3cda6e255158e1ac583.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 23,
+                            "thumb": "https://image1.guazistatic.com/qn2201011500075ac44a164ec4b3cda6e255158e1ac583.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007632c8cb19215bbaa94164c8c0fc11df6.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 41,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007632c8cb19215bbaa94164c8c0fc11df6.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007efc450c5fd9e6cab9277b7325fadbc77.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 42,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007efc450c5fd9e6cab9277b7325fadbc77.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007f1170414c0798f0c340c5e43441520a8.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 44,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007f1170414c0798f0c340c5e43441520a8.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007397cc5d36bd327c4cdfc392c47c3be91.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 45,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007397cc5d36bd327c4cdfc392c47c3be91.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn2201011500078af1d14b6df33d871f2f9ab7674f613a.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 47,
+                            "thumb": "https://image1.guazistatic.com/qn2201011500078af1d14b6df33d871f2f9ab7674f613a.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn2201011500075dea43fa6ad22e56b9ec236ef958940e.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 49,
+                            "thumb": "https://image1.guazistatic.com/qn2201011500075dea43fa6ad22e56b9ec236ef958940e.jpg?imageView2/1/w/190/h/144/q/88"
+                        }
+                    ],
+                    "type": 2
+                }, {
+                    "category": "\u673a\u8231\u5e95\u76d8",
+                    "images": [
+                        {
+                            "imgUrl": "https://image1.guazistatic.com/qn22010115000795364061f4c1769879e5c60b41e9aed9.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 24,
+                            "thumb": "https://image1.guazistatic.com/qn22010115000795364061f4c1769879e5c60b41e9aed9.jpg?imageView2/1/w/190/h/144/q/88"
+                        },
+                        {
+                            "imgUrl": "https://image1.guazistatic.com/qn22010115000701c6ac1ed4e6430ad85a348a4255db7d.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 25,
+                            "thumb": "https://image1.guazistatic.com/qn22010115000701c6ac1ed4e6430ad85a348a4255db7d.jpg?imageView2/1/w/190/h/144/q/88"
+                        },
+                        {
+                            "imgUrl": "https://image1.guazistatic.com/qn22010115000705edc291e97c8e1e8abb1c9401190d61.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 26,
+                            "thumb": "https://image1.guazistatic.com/qn22010115000705edc291e97c8e1e8abb1c9401190d61.jpg?imageView2/1/w/190/h/144/q/88"
+                        },
+                        {
+                            "imgUrl": "https://image1.guazistatic.com/qn220101150007dd9fcf66ee96ff1878e99dc12ebe181b.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 27,
+                            "thumb": "https://image1.guazistatic.com/qn220101150007dd9fcf66ee96ff1878e99dc12ebe181b.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn22010115000789f37544919d855e8254ed5f06e8be9c.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 28,
+                            "thumb": "https://image1.guazistatic.com/qn22010115000789f37544919d855e8254ed5f06e8be9c.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn22010115000781611c46a4e4cf39821e4ff4011e1cf7.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 30,
+                            "thumb": "https://image1.guazistatic.com/qn22010115000781611c46a4e4cf39821e4ff4011e1cf7.jpg?imageView2/1/w/190/h/144/q/88"
+                        }, {
+                            "imgUrl": "https://image1.guazistatic.com/qn2201011500078e100f1df002eaa281cc313818aee8e7.jpg?imageView2/1/w/750/h/500/q/88",
+                            "ind": 29,
+                            "thumb": "https://image1.guazistatic.com/qn2201011500078e100f1df002eaa281cc313818aee8e7.jpg?imageView2/1/w/190/h/144/q/88"
+                        }
+                    ],
+                    "type": 3
+                }
+            ],
+            "videoList": []
+        },
+        "carPriceInfo": {
+            "styleType": 2,
+            "styleData": {
+                "priceTitle": "\u552e\u4ef7",
+                "price": {
+                    "value": 201000,
+                    "priceDes": "20.10",
+                    "unit": "\u4e07"
+                },
+                "newPrice": {
+                    "value": 316740,
+                    "priceDes": "31.67",
+                    "unit": "\u4e07"
+                }
+            },
+            "showPrice": "20.10\u4e07"
+        },
+        "carRecordInfo": {
+            "baseInfo": {
+                "clueIdStr": "\u8f66\u6e90\u53f7HC-115459575",
+                "carId": 196741,
+                "puId": 3014893047,
+                "newEv": true,
+                "carRecordAb": "B"
+            },
+            "reportResultAnalysis": {
+                "complex": "8\u6210\u65b0",
+                "outLook": "7\u6210\u65b0",
+                "inter": "8\u6210\u65b0",
+                "machine": "8\u6210\u65b0",
+                "taskId": "3746486"
+            },
+            "salienceItem": [
+                {
+                    "label": "\u9996\u6b21\u4e0a\u724c",
+                    "value": "2020-05"
+                }, {
+                    "label": "\u8868\u663e\u91cc\u7a0b",
+                    "value": "3.0\u4e07\u516c\u91cc"
+                }, {
+                    "label": "\u6392\u653e\u6807\u51c6",
+                    "value": "\u65b0\u80fd\u6e90",
+                    "gray": true
+                }
+            ],
+            "summary": [
+                {
+                    "label": "\u8fc7\u6237\u6b21\u6570",
+                    "value": "1\u6b21"
+                },
+                {
+                    "label": "\u603b\u529f\u7387",
+                    "value": "202kW"
+                },
+                {
+                    "label": "\u8f66\u724c\u5f52\u5c5e\u5730",
+                    "value": "\u6cc9\u5dde(\u95fd)"
+                },
+                {
+                    "label": "\u7eed\u822a\u91cc\u7a0b",
+                    "value": "445km",
+                    "popStruct": {
+                        "title": "\u7eed\u822a\u91cc\u7a0b\u63d0\u793a",
+                        "desc": "\u6807\u793a\u7684\u7eed\u822a\u91cc\u7a0b\u4e3a\u5de5\u4fe1\u90e8\u516c\u793a\u7684\u65b0\u8f66\u7eaf\u7535\u7eed\u822a\u91cc\u7a0b\uff08NEDC\uff09\uff0c\u4e0d\u4ee3\u8868\u672c\u8f66\u8f86\u7684\u5b9e\u9645\u7eed\u822a\u91cc\u7a0b\u3002"
+                    }
+                }, {
+                    "label": "\u5e74\u68c0\u5230\u671f",
+                    "value": "2022-05"
+                }, {
+                    "label": "\u7535\u6c60\u5bb9\u91cf",
+                    "value": "52kWh"
+                }, {
+                    "label": "\u4ea4\u5f3a\u9669\u5230\u671f",
+                    "value": "\u5df2\u8fc7\u671f"
+                }, {
+                    "label": "\u4f7f\u7528\u6027\u8d28",
+                    "value": "\u975e\u8425\u8fd0"
+                }, {
+                    "label": "\u8f66\u8eab\u989c\u8272",
+                    "value": "\u9ed1\u8272"
+                }, {
+                    "label": "\u51fa\u5382\u65e5\u671f",
+                    "value": "2020-04"
+                }, {
+                    "label": "\u8f66\u6e90\u53f7",
+                    "value": "115459575"
+                }, {
+                    "label": "\u94a5\u5319\u6570\u91cf",
+                    "value": "1\u628a"
+                }
+            ],
+            "maintenance": "1\u6b21\u7ef4\u4fee",
+            "maintenanceAbString": "B",
+            "highlightConfigItem": [
+                {
+                    "id": 11,
+                    "title": "\u81ea\u9002\u5e94\u5de1\u822a",
+                    "image": "https://image1.guazistatic.com/qn2105181212480a405f49434fc91994a49bed6888e181.png",
+                    "desc": "Adaptive Cruise Control\u7b80\u79f0ACC\uff0c\u53ef\u4f9d\u6240\u8bbe\u5b9a\u901f\u5ea6\u884c\u9a76\uff0c\u8fd8\u53ef\u4fdd\u6301\u9884\u8bbe\u8ddf\u8f66\u8ddd\u79bb\uff0c\u968f\u7740\u8f66\u8ddd\u53d8\u5316\u81ea\u52a8\u52a0\u901f\u4e0e\u51cf\u901f\u3002"
+                },
+                {
+                    "id": 13,
+                    "title": "\u81ea\u9002\u5e94\u8fdc\u8fd1\u5149",
+                    "image": "https://image1.guazistatic.com/qn210518121604812071c5c5251de8b33dcf01a5319478.png",
+                    "desc": "\u5f00\u542f\u5927\u706f\u65f6\uff0c\u884c\u9a76\u4e2d\u4f20\u611f\u5668\u5224\u65ad\u5bf9\u5411\u6216\u540c\u5411\u8f66\u8f86\u60c5\u51b5\uff0c\u81ea\u52a8\u5207\u6362\u8fdc\u8fd1\u5149\u706f\uff0c\u6709\u6548\u4fdd\u62a4\u5176\u4ed6\u8f66\u8f86\u884c\u8f66\u5b89\u5168\u3002"
+                },
+                {
+                    "id": 14,
+                    "title": "\u5e76\u7ebf\u8f85\u52a9",
+                    "image": "https://image1.guazistatic.com/qn2105181217287a2609edcba9bb1100a000c5ac547461.png",
+                    "desc": "\u4e5f\u53eb\u76f2\u533a\u9884\u8b66\uff0c\u653e\u7f6e\u4e24\u5916\u540e\u89c6\u955c\u5185\uff0c\u5e76\u7ebf\u65f6\u63d0\u9192\u9a7e\u9a76\u5458\u540e\u65b9\u76f2\u533a\u4e2d\u7684\u6765\u8f66\u3002"
+                },
+                {
+                    "id": 16,
+                    "title": "\u5168\u666f\u6444\u50cf\u5934",
+                    "image": "https://image1.guazistatic.com/qn21051812195706c8dabc054b778fd454f0e2830e4060.png",
+                    "desc": "\u524d\u65b9\u4fa7\u65b9\u589e\u52a0\u4e86\u591a\u4e2a\u6444\u50cf\u5934\uff0c\u53ef\u4ee5\u5f97\u5230\u8f66\u56db\u5468\u7684\u5b9e\u65f6\u5f71\u50cf\u3002\u89e3\u51b3\u5012\u8f66\u5f71\u50cf\u7684\u89c6\u89d2\u7f3a\u5931\u95ee\u9898\u3002"
+                }, {
+                    "id": 17,
+                    "title": "\u8f66\u9053\u504f\u79bb\u9884\u8b66",
+                    "image": "https://image1.guazistatic.com/qn210518122054bbe5a886ca7f2adfaa4c098c9f9e4a6d.png",
+                    "desc": "\u6444\u50cf\u5934\u76d1\u63a7\u5730\u4e0a\u7684\u9053\u7ebf\uff0c\u9a7e\u9a76\u5458\u672a\u6253\u8f6c\u5411\u706f\u53d8\u9053\u65f6\uff0c\u7cfb\u7edf\u4f1a\u53d1\u51fa\u8b66\u793a\u4fe1\u53f7\u3001\u632f\u52a8\u65b9\u5411\u76d8\u7b49\u3002"
+                }, {
+                    "id": 19,
+                    "title": "\u65b9\u5411\u76d8\u7535\u52a8\u8c03\u8282",
+                    "image": "https://image1.guazistatic.com/qn210518122336c5174d02c38e32874cf3f83496a7f010.png",
+                    "desc": "\u65b9\u5411\u76d8\u901a\u8fc7\u7535\u52a8\u8c03\u8282\u7684\u65b9\u5f0f\uff0c\u5b9e\u73b0\u4e0a\u4e0b+\u524d\u540e\u8c03\u8282\u65b9\u5411\u76d8\u4ee5\u5339\u914d\u9a7e\u9a76\u5458\u4e60\u60ef\u3002"
+                }, {
+                    "id": 25,
+                    "title": "\u4e3b\u52a8\u5239\u8f66",
+                    "image": "https://image1.guazistatic.com/qn2106081432094ae2cd8f6cab69e46a61e420e2d27028.png",
+                    "desc": "\u7a81\u53d1\u5371\u9669\u60c5\u51b5\u65f6,\u80fd\u4e3b\u52a8\u4ea7\u751f\u5236\u52a8\u6548\u679c\u8ba9\u8f66\u8f86\u51cf\u901f(\u5e76\u4e0d\u4e00\u5b9a\u5b8c\u5168\u5239\u505c),\u662f\u4e00\u79cd\u63d0\u9ad8\u884c\u8f66\u5b89\u5168\u6027\u7684\u6280\u672f\u3002"
+                }, {
+                    "id": 28,
+                    "title": "\u9a7e\u9a76\u4f4d\u5ea7\u6905\u8bb0\u5fc6",
+                    "image": "https://image1.guazistatic.com/qn210518123744d23bedbe73decbfbbfd2cbfbba047b9c.png",
+                    "desc": "\u53ef\u8bb0\u5fc6\u5e76\u81ea\u52a8\u8c03\u8282\u5ea7\u6905\u4f4d\u7f6e\u4ee5\u9002\u5e94\u4e0d\u540c\u9a7e\u9a76\u5458\u7684\u5750\u59ff\uff0c\u7701\u53bb\u9891\u7e41\u8c03\u6574\u5ea7\u6905\u5750\u59ff\u7684\u60c5\u51b5\u3002"
+                }, {
+                    "id": 32,
+                    "title": "\u540e\u89c6\u955c\u9632\u7729\u76ee",
+                    "image": "https://image1.guazistatic.com/qn21051812412567a28e7aa7e631160ec55fccefe55c1f.png",
+                    "desc": "\u611f\u5e94\u5230\u5f3a\u5149\u65f6\uff0c\u540e\u89c6\u955c\u7247\u5728\u5149\u654f\u4e8c\u6781\u7ba1\u4f5c\u7528\u4e0b\u53d8\u6697\u4ee5\u8fbe\u5230\u9632\u7729\u76ee\u7684\u76ee\u7684\u3002"
+                }, {
+                    "id": 33,
+                    "title": "\u5ea7\u6905\u52a0\u70ed",
+                    "image": "https://image1.guazistatic.com/qn21051810163352c7cebb956bfeec8362c11a07926635.png",
+                    "desc": "\u5229\u7528\u5ea7\u6905\u5185\u7684\u7535\u52a0\u70ed\u4e1d\u52a0\u70ed\uff0c\u5c06\u70ed\u91cf\u4f20\u9012\u7ed9\u4e58\u5750\u8005\uff0c\u6539\u5584\u51ac\u5929\u7684\u9a7e\u4e58\u611f\u53d7\u3002"
+                }, {
+                    "id": 34,
+                    "title": "\u8fdc\u5149\u706f\u9ad8\u6e05",
+                    "image": "https://image1.guazistatic.com/qn210518124431c4e02bd37d1485ade351e8ac69daaad4.png",
+                    "desc": "\u533a\u522b\u4e8e\u4f20\u7edf\u5364\u7d20\u706f\u6ce1\uff0cLED/\u6c19\u6c14/\u6fc0\u5149\u5927\u706f\u4eae\u5ea6\u66f4\u4eae\uff0c\u7167\u5c04\u8ddd\u79bb\u66f4\u8fdc\uff0c\u5bff\u547d\u66f4\u957f\uff0c\u5916\u89c2\u66f4\u591a\u6837\u5316\u3002"
+                }, {
+                    "id": 35,
+                    "title": "\u524d\u96f7\u8fbe",
+                    "image": "https://image1.guazistatic.com/qn2105181247042217c836918adb4d1877ae45f25ca7a1.png",
+                    "desc": "\u6cca\u8f66\u6216\u6162\u901f\u884c\u9a76\u65f6\u63a2\u6d4b\u969c\u788d\u7269\uff0c\u51cf\u5c11\u6216\u6d88\u9664\u56e0\u89c6\u7ebf\u4e0d\u826f\u800c\u5f15\u8d77\u7684\u78b0\u649e\u3001\u522e\u8e6d\u4e8b\u6545\u3002"
+                }, {
+                    "id": 36,
+                    "title": "\u81ea\u52a8\u9a7b\u8f66",
+                    "image": "https://image1.guazistatic.com/qn2105181248157f6ce42b6e813cc93f9b2b7262273ca6.png",
+                    "desc": "AUTO HOLD \u9002\u7528\u4e8e\u4e0a\u4e0b\u5761\u4ee5\u53ca\u9891\u7e41\u8d77\u6b65\u505c\u8f66\u65f6\uff0c\u65e2\u7701\u53bb\u5207\u6362\u6863\u4f4d\u53c8\u51cf\u5c11\u201c\u6e9c\u8f66\"\u73b0\u8c61\u3002"
+                }, {
+                    "id": 37,
+                    "title": "\u65e0\u94a5\u5319\u8fdb\u5165",
+                    "image": "https://image1.guazistatic.com/qn210518124911ac658eddc4a5a5fbe9d448b607ded7d0.png",
+                    "desc": "\u94a5\u5319\u5728\u8eab\u4e0a\u65f6\uff0c\u53ea\u9700\u62c9\u62fd\u95e8\u628a\u624b\u3001\u6216\u89e6\u6478\u7279\u5b9a\u4f4d\u7f6e\u3001\u6216\u5c06\u624b\u6df1\u5165\u611f\u5e94\u533a\uff0c\u5373\u53ef\u89e3\u9501\u8f66\u95e8\u3002"
+                }, {
+                    "id": 38,
+                    "title": "\u611f\u5e94\u96e8\u5237",
+                    "image": "https://image1.guazistatic.com/qn21051812501634f181f27dbc325a458eb28bb0462501.png",
+                    "desc": "\u901a\u8fc7\u96e8\u91cf\u4f20\u611f\u5668\u611f\u5e94\u96e8\u6ef4\u7684\u5927\u5c0f\uff0c\u81ea\u52a8\u8c03\u8282\u96e8\u5237\u8fd0\u884c\u901f\u5ea6\u3002"
+                }, {
+                    "id": 40,
+                    "title": "\u8fd1\u5149\u706f\u9ad8\u6e05",
+                    "image": "https://image1.guazistatic.com/qn210518125243393e68fd35fd8a4f96e27f7f83eb1625.png",
+                    "desc": "\u533a\u522b\u4e8e\u4f20\u7edf\u5364\u7d20\u706f\u6ce1\uff0cLED/\u6c19\u6c14/\u6fc0\u5149\u5927\u706f\u4eae\u5ea6\u66f4\u4eae\uff0c\u7167\u5c04\u8ddd\u79bb\u66f4\u8fdc\uff0c\u5bff\u547d\u66f4\u957f\uff0c\u5916\u89c2\u66f4\u591a\u6837\u5316\u3002"
