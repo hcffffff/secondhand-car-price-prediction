@@ -224,7 +224,7 @@ var MD5 = function (string) {
 }
 
 var Verify_Token = function (stringifyParams) {
-    // var n=parseInt((new Date).getTime() / 1e3) + "";
+    // var n = parseInt((new Date).getTime() / 1e3) + "";
     var n = '1642868960'
     var verify_token = MD5("guaziclientuc" + MD5(n + "" + stringifyParams));
     return verify_token
