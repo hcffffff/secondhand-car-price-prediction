@@ -46,7 +46,6 @@ def get_single_page_info(url, car_brand, car_brand_chn, pg, ct, ct_chn, head):
         df = pd.concat([df, temp_df])
         getAllDataAndSaveToFile(car_brand, single_car["clue_id"], ct, ct_chn)
     # print(df.head(5))
-    print('\n')
 
 
 def save_info(df, file):
