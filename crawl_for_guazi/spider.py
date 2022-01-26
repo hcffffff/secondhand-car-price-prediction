@@ -34,13 +34,13 @@ def get_verify_token(stringify_params):
     # stringifyParams
 
 
-def getCarInfo(clueId, guazi_city):
+def getCarInfo(clueId):
     '''
     获取车辆基础数据
     '''
-    stringify_params = f"ca_n=default&ca_s=seo_baidu&clueId={clueId}&deviceId=12be6bb1-1b41-4bda-f274-d18b315e9065&guazi_city={guazi_city}&lat=0&lng=0&osv=ios&platfromSource=wap&sourceFrom=wap&versionId=0.0.0.0"
+    stringify_params = f"ca_n=default&ca_s=seo_baidu&clueId={clueId}&deviceId=12be6bb1-1b41-4bda-f274-d18b315e9065&guazi_city=12&lat=0&lng=0&osv=ios&platfromSource=wap&sourceFrom=wap&versionId=0.0.0.0"
     headers["verify-token"] = get_verify_token(stringify_params)
-    base_url = f"https://mapi.guazi.com/car-source/carDetail/ecDetail?clueId={clueId}&guazi_city={guazi_city}&ca_s=seo_baidu&ca_n=default&osv=ios&lng=0&lat=0&deviceId=12be6bb1-1b41-4bda-f274-d18b315e9065&versionId=0.0.0.0&sourceFrom=wap&platfromSource=wap"
+    base_url = f"https://mapi.guazi.com/car-source/carDetail/ecDetail?clueId={clueId}&guazi_city=12&ca_s=seo_baidu&ca_n=default&osv=ios&lng=0&lat=0&deviceId=12be6bb1-1b41-4bda-f274-d18b315e9065&versionId=0.0.0.0&sourceFrom=wap&platfromSource=wap"
     response = requests.get(url=base_url, headers=headers)
     if response.status_code == 200:
         result = response.json()
@@ -70,13 +70,13 @@ def getCarInfo(clueId, guazi_city):
         }
 
 
-def getDetailInfo(clueId, guazi_city):
+def getDetailInfo(clueId):
     '''
     获取车辆更详细数据
     '''
-    stringify_params = f"clueId={clueId}&deviceid=12be6bb1-1b41-4bda-f274-d18b315e9065&guazi_city={guazi_city}&osv=ios&platfromSource=wap&versionId=0.0.0.0"
+    stringify_params = f"clueId={clueId}&deviceid=12be6bb1-1b41-4bda-f274-d18b315e9065&guazi_city=12&osv=ios&platfromSource=wap&versionId=0.0.0.0"
     headers["verify-token"] = get_verify_token(stringify_params)
-    base_url = f'https://mapi.guazi.com/car-source/carRecord/configurations?versionId=0.0.0.0&osv=ios&clueId={clueId}&deviceid=12be6bb1-1b41-4bda-f274-d18b315e9065&guazi_city={guazi_city}&platfromSource=wap'
+    base_url = f'https://mapi.guazi.com/car-source/carRecord/configurations?versionId=0.0.0.0&osv=ios&clueId={clueId}&deviceid=12be6bb1-1b41-4bda-f274-d18b315e9065&guazi_city=12&platfromSource=wap'
     response = requests.get(url=base_url, headers=headers)
     if response.status_code == 200:
         result = response.json()
@@ -99,21 +99,18 @@ def isHighlight(data, highlight):
     return 0
 
 
-def getAllDataAndSaveToFile(carbrand, clueId, guazi_city):
+def getAllDataAndSaveToFile(clueId):
     '''
     为方便调用的封装函数，目的是将数据存储在位于'./crawl_for_guazi/allData'的json文件中
     '''
-    dataInfo, infoDict = getCarInfo(clueId, guazi_city)
-    dataDetail = getDetailInfo(clueId, guazi_city)
+    dataInfo, infoDict = getCarInfo(clueId)
+    dataDetail = getDetailInfo(clueId)
     tempDict = {'dataRough': dataInfo, 'dataDetail': dataDetail}
-    if not os.path.exists(f'crawl_for_guazi/allData/{carbrand}'):
-        os.makedirs(f'crawl_for_guazi/allData/{carbrand}')
-    f = open(f"./crawl_for_guazi/allData/{carbrand}/{clueId}.json", 'w')
+    f = open(f"./crawl_for_guazi/allData/{clueId}.json", 'w')
     json.dump(tempDict, f, ensure_ascii=False)
 
 
 # test:
 if __name__ == "__main__":
     clueId = "115928025"
-    guazi_city = "12"
-    getAllDataAndSaveToFile("tesila", clueId, guazi_city)
+    getAllDataAndSaveToFile(clueId)
