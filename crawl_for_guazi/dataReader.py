@@ -18,7 +18,6 @@ def readSingleCarFile(path):
     读位于allData目录下的单个车辆信息json文件
     '''
     with open(path) as f:
-        print(path)
         car_dict = json.load(f)
         return {
             'car_name': car_dict['dataRough']['carCommodityInfo']['basicInfo']['titleDesc'], # 车辆详细型号
@@ -38,17 +37,21 @@ def readSingleCarFile(path):
 
             'isDome': 1 if car_dict['dataDetail']['list'][0]['children'][1]['content'] == '国产' else 0, # 是否为国产
             'wheelBase': getDict('车身结构', car_dict['dataDetail']['list'])['children'][0]['content'] if getDict('车身结构', car_dict['dataDetail']['list']) else None, # 轴距（mm）
-            'drivingMode': getDict('驱动方式', car_dict['dataDetail']['list'])['children'][0]['content'] if getDict('驱动方式', car_dict['dataDetail']['list']) else None, # 驱动方式
+            'drivingMode': getDict('底盘转向', car_dict['dataDetail']['list'])['children'][0]['content'] if getDict('底盘转向', car_dict['dataDetail']['list']) else None, # 驱动方式
         }
 
 
 if __name__ == "__main__":
     path = 'crawl_for_guazi/allData'
     allCarFiles = os.listdir(path)
-    count = 0
+    df = pd.DataFrame([])
     for singleFileName in allCarFiles:
         if '.json' not in singleFileName:
             continue
         singleCardict = readSingleCarFile(path + f'/{singleFileName}')
-        count = count + 1
-    print(count)
+        tempdf = pd.DataFrame(singleCardict, index=[0])
+        df = df.append(tempdf)
+    df = df.reset_index(drop = True)
+    # print(df.head())
+    # print(df.shape)
+    df.to_csv('crawl_for_guazi/data.csv', index = False)
