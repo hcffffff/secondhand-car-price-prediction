@@ -6,8 +6,6 @@ import pandas as pd
 from spider import getAllDataAndSaveToFile
 
 
-# car_brands = ["tesila", "weila", "lixiang", "xiaopeng"]
-# car_brands_chn = ["特斯拉", "蔚来", "理想", "小鹏"]
 url = "https://mapi.guazi.com/car-source/carList/pcList?minor=&sourceType=&ec_buy_car_list_ab=&location_city=&district_id=&tag=-1&license_date=&auto_type=&driving_type=&gearbox=&road_haul=&air_displacement=&emission=&car_color=&guobie=&bright_spot_config=&seat=&fuel_type=3&order=&priceRange=0,-1&tag_types=&diff_city=&intention_options=&initialPriceRange=&monthlyPriceRange=&transfer_num=&car_year=&carid_qigangshu=&carid_jinqixingshi=&cheliangjibie=&page={pg}&pageSize=20&city_filter=12&city=12&guazi_city=12&qpres=499374582726520832&versionId=0.0.0.0&osv=IOS&platfromSource=wap"
 
 head = {
@@ -54,6 +52,4 @@ def get_single_page_info(url, pg, head):
 
 
 if __name__ == "__main__":
-    # for cb_, cb_chn_ in zip(car_brands, car_brands_chn):
-    #         deal_page(url, cb_, cb_chn_, 12, head)
     deal_page(url, head)

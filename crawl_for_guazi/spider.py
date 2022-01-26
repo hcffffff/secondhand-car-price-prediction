@@ -45,24 +45,6 @@ def getCarInfo(clueId):
     if response.status_code == 200:
         result = response.json()
         data = result["data"]
-        # highlightConfigItem = data['carCommodityInfo']['carRecordInfo']['highlightConfigItem']
-        # return data, {
-        #     '型号': data['baseInfo']['carOtherInfo']['tagName'],
-        #     '二手价格': data["carCommodityInfo"]["carPriceInfo"]["styleData"]["price"]["value"],
-        #     '新车价格': data["carCommodityInfo"]["carPriceInfo"]["styleData"]["newPrice"]["value"],
-        #     '首次上牌日期': data['carCommodityInfo']['carRecordInfo']['salienceItem'][0]['value'],
-        #     '表显里程': data['carCommodityInfo']['carRecordInfo']['salienceItem'][1]['value'],
-        #     '综合成色': data['carCommodityInfo']['carRecordInfo']['reportResultAnalysis']['complex'],
-        #     '过户次数': data['carCommodityInfo']['carRecordInfo']['summary'][0]['value'],
-        #     '归属地': data['carCommodityInfo']['carRecordInfo']['summary'][2]['value'],
-        #     '续航里程': data['carCommodityInfo']['carRecordInfo']['summary'][3]['value'],
-        #     '电池容量': data['carCommodityInfo']['carRecordInfo']['summary'][5]['value'],
-        #     '出厂日期': data['carCommodityInfo']['carRecordInfo']['summary'][9]['value'],
-        #     '有无并线辅助': isHighlight(highlightConfigItem, '并线辅助'),
-        #     '有无自动驻车': isHighlight(highlightConfigItem, '自动驻车'),
-        #     '有无四驱系统': isHighlight(highlightConfigItem, '四驱系统'),
-        #     '有无座椅加热': isHighlight(highlightConfigItem, '座椅加热')
-        # }
         return data
     else:
         print(clueId + " has problems!")
@@ -85,19 +67,6 @@ def getDetailInfo(clueId):
         return data
     else:
         print('error!')
-
-
-def isHighlight(data, highlight):
-    '''
-    data为data['carCommodityInfo']['carRecordInfo']['highlightConfigItem'] 一个列表
-    返回1，如果这辆车有该项highlight；
-    否则返回0
-    '''
-    for hasHighlight in data:
-        # print(hasHighlight['title'])
-        if hasHighlight['title'] == highlight:
-            return 1
-    return 0
 
 
 def getAllDataAndSaveToFile(clueId):
