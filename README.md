@@ -32,14 +32,17 @@
    2. [采用LGB+XGBoost](https://github.com/WillianWang2025/UsedCarPricePrediction/blob/master/LGB_and_XGBoost.ipynb)
 
 ## 数据获取方法：
+
+### 网页属性
 1. 以北京地区特斯拉瓜子二手车网站为例：可以抓包获取到瓜子页面api: `https://mapi.guazi.com/car-source/carList/pcList?minor=tesila&sourceType=&ec_buy_car_list_ab=&location_city=&district_id=&tag=-1&license_date=&auto_type=&driving_type=&gearbox=&road_haul=&air_displacement=&emission=&car_color=&guobie=&bright_spot_config=&seat=&fuel_type=&order=&priceRange=0,-1&tag_types=&diff_city=&intention_options=&initialPriceRange=&monthlyPriceRange=&transfer_num=&car_year=&carid_qigangshu=&carid_jinqixingshi=&cheliangjibie=&key_word=%E7%89%B9%E6%96%AF%E6%8B%89&page=1&pageSize=20&city_filter=12&city=12&guazi_city=12&qpres=484192054210134016&versionId=0.0.0.0&osv=IOS&platfromSource=wap`
 该网页url中`minor=tesila`可以更改为其他名称（如weila-蔚来，baoma-宝马），并修改`keyword`关键词，实际上`keyword=%E7%89%B9%E6%96%AF%E6%8B%89`中为UTF-8格式，直接解码就是中文特斯拉。我尝试将`minor`改为`weilai`，并将`keyword`改为`%E8%94%9A%E6%9D%A5%0A`（即“蔚来”的UTF-8格式）便可获取到蔚来相关的数据。同时，可以修改`city_filter`，`city`，`guazi_city`即可更改城市，例如`city=13`为上海。将注意此时的网页是很多项目浏览的网页，并不能获取到车辆的详细信息。
 2. 进入上述网页后，转换为json格式后，可以看到`post_list`中包含了一个网页里所有的可用车辆，可以轻易得到`clue_id`，将其添加到`https://www.guazi.com/Detail?clueId=`之后可以得到该车辆的详细信息。
-3. guazi网页采用的反爬虫方法：有一些字符是以HTML实体的元素存储的，但解码出来是一个方框，比如`"price": "&#58928;&#58397;.&#59537;&#59854;万"`，经过HTML解码后得到".万"，可见并不可用，再将该文字进行UTF-8解码得到"\&#xE630;\&#xE41D;.\&#xE891;\&#xE9CE;\&#x4E07;"，实际上还是不可用的，因为有反爬虫的功能。但是进行后台抓包可以获取到一个"gzfont4.woff2"的字体文件，进行读取后可以看到：
+### 加密方法
+1. guazi网页采用的反爬虫方法：有一些字符是以HTML实体的元素存储的，但解码出来是一个方框，比如`"price": "&#58928;&#58397;.&#59537;&#59854;万"`，经过HTML解码后得到".万"，可见并不可用，再将该文字进行UTF-8解码得到"\&#xE630;\&#xE41D;.\&#xE891;\&#xE9CE;\&#x4E07;"，实际上还是不可用的，因为有反爬虫的功能。但是进行后台抓包可以获取到一个"gzfont4.woff2"的字体文件，进行读取后可以看到：
 ![gzfont](crawl_for_guazi/figures/gzfont_figure1.png)
 很清楚，每一个unicode编码都对应一个数字字体，所以无法被解码出来。故我们只需要将字体文件中的对应关系找到即可。但是问题又出现了，每一天的gzfont字体文件是不同的，即今天可能是gzfont1，明天可能是gzfont2。比如一个gzfont3文件：
 ![gzfont](crawl_for_guazi/figures/gzfont_figure2.png)
-1. 经过一番资料查询和学习后，我发现这样的情况是因为瓜子网站采用了js签名的反爬虫的方法，因为如果要获取字体再反解析的话会很麻烦，所以改变方法，采用解析网页js，然后获取他的签名加密方法，然后模仿加密方法获取到签名数据，再根据此获取到源文件，具体方法如下：
+2. 经过一番资料查询和学习后，我发现这样的情况是因为瓜子网站采用了js签名的反爬虫的方法，因为如果要获取字体再反解析的话会很麻烦，所以改变方法，采用解析网页js，然后获取他的签名加密方法，然后模仿加密方法获取到签名数据，再根据此获取到源文件，具体方法如下：
    1. 在页面加载的内容中可以看到一个显示包含车辆所有数据（名称、价格、排量、里程等）的文稿，但遗憾的是直接请求该网址会显示签名验证失败。
       <center>
          <img style="border-radius: 0.3125em;
@@ -95,6 +98,34 @@
          color: #999;
          padding: 2px;">可以看见控制台中的手算token与标头中的token完全一样</div>
       </center>
+### 数据保存
+通过`spider.py`将汽车基础数据和详细属性数据合并，需要说明二者虽然来自不同网页（前者来自`https://mapi.guazi.com/car-source/carDetail/ecDetail?clueId={clueId}&guazi_city=12&ca_s=seo_baidu&ca_n=default&osv=ios&lng=0&lat=0&deviceId=12be6bb1-1b41-4bda-f274-d18b315e9065&versionId=0.0.0.0&sourceFrom=wap&platfromSource=wap`，而后者来自`https://mapi.guazi.com/car-source/carRecord/configurations?versionId=0.0.0.0&osv=ios&clueId={clueId}&deviceid=12be6bb1-1b41-4bda-f274-d18b315e9065&guazi_city=12&platfromSource=wap`，二者都包含可改变自断`clueId`，如前所述，此ID每一个登记车辆都是唯一的），但加密方法和获取数据方法是完全一样的，并以字典形式保存到同一个json文件中，命名为`{clueId}.json`，所有文件可以在`crawl_for_guazi/allData/`目录下查看到。
+
+### 数据筛选
+1. 通过阅读文献与属性分析，初步决定保存汽车品牌、具体型号、该二手车售价、新车售价、整体成色、首次上牌日期、已经行驶的里程、车辆总功率、车辆归属地、续航里程、是否为国产、轴距、驱动方式，共684辆纯电动车的数据，这几乎也是瓜子二手车上所有的纯电动车数据了。该文件可以在`crawl_for_guazi/data.csv`中查看。
+2. 数据属性说明：
+   ```
+   RangeIndex: 684 entries, 0 to 683
+   Data columns (total 14 columns):
+   #   Column          Non-Null Count  Dtype   Meaning
+   ---  ------          --------------  -----  ------------
+   0   car_name        684 non-null    object  车辆完整型号，如：特斯拉MODEL S 2014款 MODEL S 85
+   1   car_brand       684 non-null    object  车辆品牌，如：特斯拉
+   2   car_tag         684 non-null    object  车辆品牌下的型号，如：特斯拉MODEL S
+   3   price           684 non-null    int64   该二手车价格，单位：元，如：285000
+   4   new_price       684 non-null    int64   该车型新车价格（官方指导价），单位：元，如：796735
+   5   complexOutlook  684 non-null    object  整体评测外观成色，如：7成新
+   6   firstCert       684 non-null    object  首次上牌年月，如：2015-02
+   7   odograph        684 non-null    object  表显里程，如：4.7万公里
+   8   allPower        684 non-null    object  车辆总功率，如：270kW
+   9   carBelong       684 non-null    object  车辆归属地，如：烟台(鲁)	
+   10  range           684 non-null    object  续航里程，如：502km
+   11  isDome          684 non-null    int64   是否为国产，0/1，如：0
+   12  wheelBase       684 non-null    int64   轴距，单位：mm，如：2960
+   13  drivingMode     684 non-null    object  驱动方式，如：后置后驱
+   dtypes: int64(4), object(10)
+   memory usage: 74.9+ KB
+   ```
 
 
 ## 算法与模型：
