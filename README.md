@@ -31,7 +31,7 @@
    1. [采用lightgbm+catboost+neural_network](https://github.com/wujiekd/Predicting-used-car-prices)
    2. [采用LGB+XGBoost](https://github.com/WillianWang2025/UsedCarPricePrediction/blob/master/LGB_and_XGBoost.ipynb)
 
-## 数据获取方法：
+## 数据获取方法
 
 ### 网页属性
 1. 以北京地区特斯拉瓜子二手车网站为例：可以抓包获取到瓜子页面api: `https://mapi.guazi.com/car-source/carList/pcList?minor=tesila&sourceType=&ec_buy_car_list_ab=&location_city=&district_id=&tag=-1&license_date=&auto_type=&driving_type=&gearbox=&road_haul=&air_displacement=&emission=&car_color=&guobie=&bright_spot_config=&seat=&fuel_type=&order=&priceRange=0,-1&tag_types=&diff_city=&intention_options=&initialPriceRange=&monthlyPriceRange=&transfer_num=&car_year=&carid_qigangshu=&carid_jinqixingshi=&cheliangjibie=&key_word=%E7%89%B9%E6%96%AF%E6%8B%89&page=1&pageSize=20&city_filter=12&city=12&guazi_city=12&qpres=484192054210134016&versionId=0.0.0.0&osv=IOS&platfromSource=wap`
@@ -127,10 +127,10 @@
    memory usage: 74.9+ KB
    ```
 
-## 数据处理与分析：
+## 数据处理与分析
 为了方便后续的模型处理与研究，对上述的数据属性进行清洗与处理
 
-### 数据清洗具体过程：
+### 数据清洗具体过程
 1. 处理外观成色属性字段，将其转换为float类型
 2. 将首次上牌日期修改为pandas.datetime形式，并新增一列表示从上牌日期至数据获取日期（2022-01-26）的天数
 3. 删除表显里程数的中文，统一为“公里”单位
@@ -138,12 +138,25 @@
 5. 删除无新车价格数据的行
 6. 添加损耗价格与损耗价格率与保值率（二手价格/新车价格）
 
-### 数据分析具体过程：
-1. 查看折价率为0（二手车价格甚至超过新车价格的行）：  
-   共两款：特斯拉 Model Y 2022款 后轮驱动版 二手价格：385800，新车价格：327638；和五菱汽车 宏光MINI EV 2020款 悦享款 三元锂 二手价格：46800，新车价格：42116
-2. 
-   
+### 数据分析具体过程
+1. 查看折价率为0，保值率>1的车（二手车价格甚至超过新车价格的行）：  
+2. 对特征与保值率作图分析：
+   ![](model/output.png)
+   可以明显看出右下角的使用天数与折价率有较大相关性，具有中等程度的相关性的特征有：表显里程odograph、外观成色complexOutlook、续航里程range，而相关性较弱的特征为是否为国产isDome、轴距wheelBase、总功率allPower、驱动方式drivingMode。
+3. 分析数量前十的汽车品牌与保值率的关系：
+   ![](model/output1.png)
+   似乎有一定的聚集的属性，例如特斯拉的保值率高于0.6，五菱的保值率就集中在0.8以上，北汽新能源的保值率可能大概率低于0.6。
+4. 分析数量前十的销售地区与保值率的关系：
+   ![](model/output2.png)
+   可见关系性似乎不大。
 
+### 模型建立的考量因素（由高到低）
+1. 使用天数
+2. 外观成色
+3. 表显里程
+4. 车辆功率
+5. 续航里程
+6. 轴距
 
 ## 算法与模型：
 1. 参考

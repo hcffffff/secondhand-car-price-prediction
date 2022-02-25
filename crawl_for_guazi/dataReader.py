@@ -20,6 +20,7 @@ def readSingleCarFile(path):
     with open(path) as f:
         car_dict = json.load(f)
         return {
+            'id': car_dict['dataRough']['baseInfo']['carOtherInfo']['clueId'], # clueId
             'car_name': car_dict['dataRough']['carCommodityInfo']['basicInfo']['titleDesc'], # 车辆详细型号
             'car_brand': car_dict['dataRough']['baseInfo']['carOtherInfo']['minorName'], # 车辆品牌
             'car_tag': car_dict['dataRough']['baseInfo']['carOtherInfo']['tagName'], # 具体型号
@@ -31,9 +32,9 @@ def readSingleCarFile(path):
             'firstCert': car_dict['dataRough']['carCommodityInfo']['carRecordInfo']['salienceItem'][0]['value'], # 首次上牌年月
             'odograph': car_dict['dataRough']['carCommodityInfo']['carRecordInfo']['salienceItem'][1]['value'], # 表显里程
 
-            'allPower': car_dict['dataRough']['carCommodityInfo']['carRecordInfo']['summary'][1]['value'], # 总功率 单位kW
-            'carBelong': car_dict['dataRough']['carCommodityInfo']['carRecordInfo']['summary'][2]['value'], # 车牌归属地
-            'range': car_dict['dataRough']['carCommodityInfo']['carRecordInfo']['summary'][3]['value'], # 续航里程
+            'allPower': car_dict['dataRough']['carCommodityInfo']['carRecordInfo']['summary'][2]['value'], # 总功率 单位kW
+            'carBelong': car_dict['dataRough']['carCommodityInfo']['carRecordInfo']['summary'][3]['value'], # 车牌归属地
+            'range': car_dict['dataRough']['carCommodityInfo']['carRecordInfo']['summary'][4]['value'], # 续航里程
 
             'isDome': 1 if car_dict['dataDetail']['list'][0]['children'][1]['content'] == '国产' else 0, # 是否为国产
             'wheelBase': getDict('车身结构', car_dict['dataDetail']['list'])['children'][0]['content'] if getDict('车身结构', car_dict['dataDetail']['list']) else None, # 轴距（mm）

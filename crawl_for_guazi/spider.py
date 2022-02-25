@@ -80,6 +80,21 @@ def getAllDataAndSaveToFile(clueId):
     json.dump(tempDict, f, ensure_ascii=False)
 
 
+def getNewData(clueId, idList):
+    '''
+    筛选出在'./crawl_for_guazi/allData'已经得到的数据集，并排除这些id，得到新的数据集作为验证集。
+    '''
+    if clueId in idList:
+        return 0
+    else:
+        dataInfo = getCarInfo(clueId)
+        dataDetail = getDetailInfo(clueId)
+        tempDict = {'dataRough': dataInfo, 'dataDetail': dataDetail}
+        f = open(f"./crawl_for_guazi/newData/{clueId}.json", 'w')
+        json.dump(tempDict, f, ensure_ascii=False)
+        return 1
+
+
 # test:
 if __name__ == "__main__":
     clueId = "115928025"
