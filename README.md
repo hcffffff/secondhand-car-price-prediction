@@ -105,30 +105,58 @@
 1. 通过阅读文献与属性分析，初步决定保存汽车品牌、具体型号、该二手车售价、新车售价、整体成色、首次上牌日期、已经行驶的里程、车辆总功率、车辆归属地、续航里程、是否为国产、轴距、驱动方式，共684辆纯电动车的数据，这几乎也是瓜子二手车上所有的纯电动车数据了。该文件可以在`crawl_for_guazi/data.csv`中查看。
 2. 数据属性说明：
    ```
-   RangeIndex: 684 entries, 0 to 683
-   Data columns (total 14 columns):
-   #   Column          Non-Null Count  Dtype   Meaning
+   RangeIndex: 725 entries, 0 to 724
+   Data columns (total 15 columns):
+   #   Column          Non-Null Count  Dtype    Meaning
    ---  ------          --------------  -----  ------------
-   0   car_name        684 non-null    object  车辆完整型号，如：特斯拉MODEL S 2014款 MODEL S 85
-   1   car_brand       684 non-null    object  车辆品牌，如：特斯拉
-   2   car_tag         684 non-null    object  车辆品牌下的型号，如：特斯拉MODEL S
-   3   price           684 non-null    int64   该二手车价格，单位：元，如：285000
-   4   new_price       684 non-null    int64   该车型新车价格（官方指导价），单位：元，如：796735
-   5   complexOutlook  684 non-null    object  整体评测外观成色，如：7成新
-   6   firstCert       684 non-null    object  首次上牌年月，如：2015-02
-   7   odograph        684 non-null    object  表显里程，如：4.7万公里
-   8   allPower        684 non-null    object  车辆总功率，如：270kW
-   9   carBelong       684 non-null    object  车辆归属地，如：烟台(鲁)	
-   10  range           684 non-null    object  续航里程，如：502km
-   11  isDome          684 non-null    int64   是否为国产，0/1，如：0
-   12  wheelBase       684 non-null    int64   轴距，单位：mm，如：2960
-   13  drivingMode     684 non-null    object  驱动方式，如：后置后驱
-   dtypes: int64(4), object(10)
-   memory usage: 74.9+ KB
+   0   id              725 non-null    int64   车辆id
+   1   car_name        725 non-null    object  车辆完整型号，如：特斯拉MODEL S 2014款 MODEL S 85
+   2   car_brand       725 non-null    object  车辆品牌，如：特斯拉
+   3   car_tag         725 non-null    object  车辆品牌下的型号，如：特斯拉MODEL S
+   4   price           725 non-null    int64   该二手车价格，单位：元，如：285000
+   5   new_price       725 non-null    int64   该车型新车价格（官方指导价），单位：元，如：796735
+   6   complexOutlook  725 non-null    object  整体评测外观成色，如：7成新
+   7   firstCert       725 non-null    object  首次上牌年月，如：2015-02
+   8   odograph        725 non-null    object  表显里程，如：4.7万公里
+   9   allPower        725 non-null    object  车辆总功率，如：270kW
+   10  carBelong       725 non-null    object  车辆归属地，如：烟台(鲁)	
+   11  range           725 non-null    object  续航里程，如：502km
+   12  isDome          725 non-null    int64   是否为国产，0/1，如：0
+   13  wheelBase       725 non-null    int64   轴距，单位：mm，如：2960
+   14  drivingMode     725 non-null    object  驱动方式，如：后置后驱
+   dtypes: int64(5), object(10)
+   memory usage: 85.1+ KB
    ```
 
 ## 数据处理与分析
-为了方便后续的模型处理与研究，对上述的数据属性进行清洗与处理
+为了方便后续的模型处理与研究，对上述的数据属性进行清洗与处理，清洗后的数据属性说明：
+   ```
+   Int64Index: 724 entries, 0 to 724
+   Data columns (total 19 columns):
+   #   Column          Non-Null Count  Dtype          Meaning
+   ---  ------          --------------  -----         ------------
+   0   id              724 non-null    int64          车辆id
+   1   car_name        724 non-null    object         车辆完整型号，如：特斯拉MODEL S 2014款 MODEL S 85
+   2   car_brand       724 non-null    object         车辆品牌，如：特斯拉
+   3   car_tag         724 non-null    object         车辆品牌下的型号，如：特斯拉MODEL S
+   4   price           724 non-null    int64          该二手车价格，单位：元，如：285000
+   5   new_price       724 non-null    int64          该车型新车价格（官方指导价），单位：元，如：796735
+   6   complexOutlook  724 non-null    float64        整体评测外观成色，如：7
+   7   firstCert       724 non-null    datetime64[ns] 首次上牌年月，如：2015-02，以 pd.datetime64 的格式
+   8   odograph        724 non-null    float64        表显里程，单位：km，如：47000
+   9   allPower        724 non-null    float64        车辆总功率，单位：kW，如：270
+   10  carBelong       724 non-null    object         车辆归属地，如：烟台(鲁)	
+   11  range           692 non-null    float64        续航里程，单位：km，如：502
+   12  isDome          724 non-null    int64          是否为国产，0/1，如：0
+   13  wheelBase       724 non-null    int64          轴距，单位：mm，如：2960
+   14  drivingMode     724 non-null    object         驱动方式，如：后置后驱
+   15  daysGone        724 non-null    int64          行驶天数，单位：天，如：550
+   16  depri           724 non-null    int64          折损价格，不小于0，单位：元，如 768235
+   17  depri_ratio     724 non-null    float64        折损率，折损价格/新车价格
+   18  preserve_ratio  724 non-null    float64        保值率，1-折损率
+   dtypes: datetime64[ns](1), float64(6), int64(7), object(5)
+   memory usage: 113.1+ KB
+   ```
 
 ### 数据清洗具体过程
 1. 处理外观成色属性字段，将其转换为float类型
