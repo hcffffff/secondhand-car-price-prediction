@@ -43,7 +43,7 @@ def readSingleCarFile(path):
 
 
 if __name__ == "__main__":
-    path = 'crawl_for_guazi/allData'
+    path = 'crawl_for_guazi/newData'
     allCarFiles = os.listdir(path)
     df = pd.DataFrame([])
     for singleFileName in allCarFiles:
@@ -55,4 +55,4 @@ if __name__ == "__main__":
     df = df.reset_index(drop = True)
     # print(df.head())
     # print(df.shape)
-    df.to_csv('crawl_for_guazi/data.csv', index = False)
+    df.to_csv('crawl_for_guazi/newData.csv', index = False)

@@ -68,6 +68,8 @@ def get_new_page(url, head, idList):
     while page <= total_page:
         total = total + get_new_single_page_info(url, page, head, idList)
         page += 1
+        if page > 1: # 用于测试，只获取1页（20辆车）的数据
+            break
     print(f"Finish! Total is {total}/{pageTotal}.", end="\n")
 
 
@@ -99,5 +101,5 @@ if __name__ == "__main__":
         if '.json' not in singleFileName:
             continue
         idList.append(int(singleFileName.split('.')[0]))
-    print(idList)
+    # print(idList)
     get_new_page(url, head, idList)
