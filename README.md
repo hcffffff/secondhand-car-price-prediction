@@ -1,6 +1,6 @@
 # secondhand-car-price-prediction
 
-## Usage:
+## How to use
 需要的环境：
 ```
 python3 (>=3.5)
